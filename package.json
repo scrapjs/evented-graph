@@ -1,0 +1,33 @@
+{
+  "name": "evented-graph",
+  "version": "1.0.0",
+  "description": "Graph emitting mutator events",
+  "main": "test.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dfcreative/evented-graph"
+  },
+  "keywords": [
+    "graph",
+    "tolstoy",
+    "evented",
+    "data-structures"
+  ],
+  "author": "Deema Yvanow <dfcreative@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dfcreative/evented-graph/issues"
+  },
+  "homepage": "https://github.com/dfcreative/evented-graph",
+  "dependencies": {
+    "inherits": "^2.0.1",
+    "tolstoy": "^1.1.0",
+    "xtend": "^4.0.0"
+  },
+  "devDependencies": {
+    "babel": "^5.8.23"
+  }
+}
