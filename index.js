@@ -62,17 +62,16 @@ EventedGraph.prototype.off = function () {
 			return pureMeth.call(this, a, b);
 		}
 
-		var res;
 		var prev = this.edges.get(a).size;
 
-		if (arguments.length < 2 ) {
-			this.outputs.get(a).forEach(function (target) {
-				pureMeth.call(this, a, target);
+		if (arguments.length < 2) {
+			this.outputs.get(a).forEach(function (b) {
+				this.disconnect(a, b);
 			}, this);
-			res = this.edges.get(a).size !== prev;
-		} else {
-			res = pureMeth.call(this, a, b);
+			return this.edges.get(a).size !== prev;
 		}
+
+		var res = pureMeth.call(this, a, b);
 
 		if (this.edges.get(a).size !== prev) {
 			this.emit.call(this, methName, a, b);

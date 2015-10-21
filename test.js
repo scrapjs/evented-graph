@@ -35,6 +35,7 @@ graph.on('connect', function (a, b) {
 	assert.equal(a, 1);
 	assert.equal(b, 2);
 	events.push('connect');
+	this.off('connect');
 });
 
 graph.connect(5,6);
@@ -42,13 +43,29 @@ graph.connect(1,2);
 
 
 //disconnect
-graph.on('disconnect', function (node) {
-	assert.equal(node, 1);
+graph.on('disconnect', function (a, b) {
+	assert.equal(a, 1);
+	assert.equal(b, 2);
 	events.push('disconnect');
+	this.off('disconnect');
 });
 
 graph.disconnect(5);
+graph.disconnect(1, 2);
+
+
+//disconnect multiple
+graph.connect(1,2);
+graph.connect(1,3);
+var times = 0;
+graph.on('disconnect', function (a, b) {
+	assert.equal(a, 1);
+	assert([2,3].indexOf(b) >= 0);
+	times++;
+});
 graph.disconnect(1);
+assert.equal(times, 2);
+graph.off('disconnect');
 
 
 //clear
