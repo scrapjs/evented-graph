@@ -14,7 +14,9 @@ function EventedGraph (arg) {
 	if (!(this instanceof EventedGraph)) return new EventedGraph(arg);
 
 	Emitter.call(this);
-	Graph.call(this, arg);
+
+	//constructor doesn’t check type of this
+	Graph.prototype.constructor.call(this, arg);
 };
 
 
